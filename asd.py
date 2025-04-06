@@ -7,12 +7,23 @@ load_dotenv()
 host = os.getenv("db_host")
 user = os.getenv("db_user")
 password = os.getenv("db_password")
+database = os.getenv('db_database')
 
 
 mydb = mysql.connector.connect(
     host = host,
     user = user,
-    password = password
+    password = password,
+    database = database
 )
 
-print(mydb)
+mycursor = mydb.cursor()
+
+mycursor.execute('SELECT * FROM employees')
+
+myresult = mycursor.fetchall()
+
+for x in myresult:
+    print(x)
+
+
