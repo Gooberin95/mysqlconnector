@@ -19,11 +19,24 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-mycursor.execute('SELECT MAX(salary) FROM employees')
+mycursor.execute(
+"INSERT INTO employees (employee_id, first_name, last_name, department, title, salary)"
+                 "VALUES ('77777', 'Billy', 'Bob', 'Facilities', 'Cleaner', 800000)"
+)
+
+mydb.commit()
+
+
+mycursor.execute('SELECT * FROM employees')
 
 myresult = mycursor.fetchall()
 
-for x in myresult:
-    print(x)
+for row in myresult:
+    print(row)
+
+mydb.close()
+
+
+
 
 
