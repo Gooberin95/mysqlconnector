@@ -19,7 +19,7 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-mycursor.execute('SELECT * FROM employees')
+mycursor.execute('SELECT MAX(salary) FROM employees')
 
 myresult = mycursor.fetchall()
 
